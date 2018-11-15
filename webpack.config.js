@@ -5,7 +5,7 @@ var BUILD_DIR = path.join(__dirname, 'dist');
 var APP_DIR = path.join(__dirname, 'src');
 
 var config = {
-  entry: APP_DIR + '/app.js',
+  entry: APP_DIR + '/index.js',
   output: {
     path: BUILD_DIR,
     filename: 'app.bundle.js'
@@ -13,9 +13,12 @@ var config = {
   module: {
     rules: [
       {
-        test: /\.(js | jsx)?/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
       }
     ]
   }
