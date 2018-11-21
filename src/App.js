@@ -1,12 +1,17 @@
 import React from 'react';
 
-function newList() {
-  alert('test');
-  // var item = document.getElementByTagName('input').value
-  // var text = document.createTextNode(item)
-  // var newItem = document.createElement("li")
-  // newItem.appendChild(text)
-  // document.getElementByTagName("ul").appendChild(newItem);
+function newTodo() {
+  var item = document.getElementById('todoInput').value;
+  var text = document.createTextNode(item);
+  var newItem = document.createElement('li');
+  newItem.appendChild(text);
+  var checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.name = 'name';
+  checkbox.value = 'value';
+  checkbox.id = 'id';
+  newItem.appendChild(checkbox);
+  document.getElementById('todoList').appendChild(newItem);
 }
 
 class App extends React.Component {
@@ -14,9 +19,9 @@ class App extends React.Component {
     return (
       <div>
         <h2>Todo List:</h2>
-        <input type="text" placeholder="Add New todo..." />
-        <button type="submit" onClick={newList}>Add Task</button>
-        <ul></ul>
+        <input id="todoInput" type="text" placeholder="Add New todo..." />
+        <button type="submit" onClick={newTodo}>Add Task</button>
+        <ul id="todoList"></ul>
       </div>
     );
   }
